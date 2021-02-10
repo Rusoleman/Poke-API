@@ -50,6 +50,7 @@ import ResetButton from './ResetButton.js'
         onOpen()
         clearList([])
         setIsClear(false)
+        setIsAlert(false)
     }
   
     return (
