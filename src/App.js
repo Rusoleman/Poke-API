@@ -1,11 +1,15 @@
+import * as React from "react"
 import './App.css';
 import PokeBox from './componets/PokeBox';
 
+import { ChakraProvider } from "@chakra-ui/react"
+
+
 function App() {
   return (
-    <div className="App">
+    <ChakraProvider >
       <PokeBox />
-    </div>
+    </ChakraProvider>
   );
 }
 

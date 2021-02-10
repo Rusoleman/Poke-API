@@ -3,12 +3,16 @@ import axios from 'axios'
 import './PokeBox.css'
 import Pokemon from './Pokemon'
 import Form from './Form'
+import AlertCant from './AlertCant'
+import { Spinner } from "@chakra-ui/react"
+
 
 function PokeBox() {
     const [isPokemon, setIsPokemon] = useState([])
     const [query, setQuery] = useState("")
     const [cant, setCant] = useState(10)
-
+    const [isLoading, setIsloading] = useState(false)
+    const [isAlert, setIsAlert] = useState(false)
 
     useEffect(() => {
         if(query) {
@@ -20,7 +24,7 @@ function PokeBox() {
                 }
                 catch(err) {
                     if(err.response.status) {
-                        alert("The type doesn't found...!")
+                        setIsAlert(true)
                     }
                 }
  
@@ -28,20 +32,24 @@ function PokeBox() {
             getData()
         }      
     }, [query, cant])
-
-    
-
-    
+   
     const myPokemonsGo = isPokemon.map((value) => {
         return <Pokemon name={value.pokemon.name} url={value.pokemon.url} key={value.pokemon.name}/>
     })
  
-
     return (
         <div className="poke__box">
-            <h1>Pokemons</h1>
-            <Form handleSearch={setQuery} clearList={setIsPokemon} handleCant={setCant}/>
-            {isPokemon.length > 0 && myPokemonsGo}  
+            <div className="alert__box">
+                {isAlert && <AlertCant setIsAlert={setIsAlert} isAlert={isAlert}/>}
+            </div>
+            <img src="https://tecnogeek.net/wp-content/uploads/2016/07/Pokemon-GO.jpg" alt="Icon Pokemon"/>
+            <Form handleSearch={setQuery} clearList={setIsPokemon} handleCant={setCant} setIsloading={setIsloading} setIsAlert={setIsAlert}/>
+            {/* <Form handleSearch={setQuery} clearList={setIsPokemon} handleCant={setCant}/> */}
+            {isLoading && <Spinner />}
+            <div className="container__pokemon">
+                {isPokemon.length > 0 && myPokemonsGo} 
+            </div> 
+            
         </div>
     )
 }

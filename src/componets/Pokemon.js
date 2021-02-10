@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import PokemonItem from './PokemonItem'
+import './Pokemon.css'
 
 function Pokemon({name, url, type}) {
     const [isImg, setIsImg] = useState("")
     const [types, setTypes] = useState([])
     
-
     useEffect(() => {
         const getUrlImg = async () => {
             const promise = await axios.get(url)
