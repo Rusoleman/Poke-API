@@ -29,6 +29,7 @@ import ResetButton from './ResetButton.js'
     const handlePokemon = (e) => {
         e.preventDefault()
         setIsloading(true)
+        
 
         setTimeout(() => {
           handleSearch(value)
@@ -73,7 +74,7 @@ import ResetButton from './ResetButton.js'
                     <FormLabel>Select Cant Pokemon</FormLabel>
                     <SelectValue setIsAlert={setIsAlert} handleCant={handleCant}/>
                     <FormLabel>Write Pokemon Type..</FormLabel>
-                    <Input value={value} ref={initialRef} placeholder="Type..." onChange={(e) => setValue(e.target.value)}/>
+                    <Input value={value} ref={initialRef} placeholder="Type..." onChange={(e) => setValue(e.target.value.toLowerCase())}/>
                 </FormControl>
               </form>
             </ModalBody>
