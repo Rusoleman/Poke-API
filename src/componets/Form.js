@@ -71,7 +71,7 @@ import ResetButton from './ResetButton.js'
               <form onSubmit={(e) => handlePokemon(e)}>
                 <FormControl>
                     <FormLabel>Select Cant Pokemon</FormLabel>
-                    <SelectValue handleCant={handleCant}/>
+                    <SelectValue setIsAlert={setIsAlert} handleCant={handleCant}/>
                     <FormLabel>Write Pokemon Type..</FormLabel>
                     <Input value={value} ref={initialRef} placeholder="Type..." onChange={(e) => setValue(e.target.value)}/>
                 </FormControl>

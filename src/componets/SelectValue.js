@@ -1,10 +1,11 @@
 import React from 'react'
 import { Select } from "@chakra-ui/react"
 
-function SelectValue({handleCant}) {
+function SelectValue({handleCant, setIsAlert}) {
     
     const getValue = (e) => {
         handleCant(e)
+        setIsAlert(false)
     }
 
     return (
